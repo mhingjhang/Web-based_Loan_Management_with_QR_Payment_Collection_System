@@ -17,7 +17,7 @@
 
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/tablestyle.css') }}">
-	{{-- <link rel="stylesheet" href="{{ asset('css/dialogbox.css') }}"> --}}
+	<link rel="stylesheet" href="{{ asset('css/approvalProgressBar.css') }}">
 	<title>Loan Managment System</title>
 
 	<style>
@@ -79,6 +79,8 @@
 		<main>
 			<!--Content-->
 			@yield('content')
+
+			@yield('modal_content')
 			
 		</main>
 

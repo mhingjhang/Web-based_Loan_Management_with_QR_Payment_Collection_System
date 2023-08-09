@@ -10,9 +10,19 @@ class LoanApprovalController extends Controller
 {
     public function show()
     {
-        $loanApplications = LoanApplication::with('loan.borrower')->paginate(10); // Here, '10' is the number of records per page.
+        $loanApplications = LoanApplication::with('loan.borrower');
 
         return view('LoanManagement.loanapproval', ['loanApplications' => $loanApplications]);
     }
+
+    public function showPromissoryQRCode(){
+        $loanApplicationIds = [1]; // Replace with the specific IDs you want to retrieve
+        $loanApplications = LoanApplication::with('loan.borrower')
+                                        ->whereIn('LoanApplicationID', $loanApplicationIds)
+                                        ->get();
+
+        return view('LoanManagement.LoanApprovalModule.promissory-QRCode', ['loanApplications' => $loanApplications]);
+    }
+
 
 }

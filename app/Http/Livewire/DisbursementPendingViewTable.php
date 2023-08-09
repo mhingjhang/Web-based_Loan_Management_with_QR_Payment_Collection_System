@@ -25,10 +25,13 @@ class DisbursementPendingViewTable extends DataTableComponent
                 ->sortable(),
             Column::make("Status", "Status")
                 ->sortable(),
-            Column::make('Actions')
-                ->label(function($row, Column $column) {
-                    return view('livewire.table-actions-disbursement-pending');
+            Column::make('Action')
+                ->label(function ($row, Column $column) {
+                    // dd($row);
+                    return view('livewire.table-actions-disbursement-pending', ['user' => $row->Principal]);
                 }),
+
+
         ];
     }
 }

@@ -1,4 +1,4 @@
 <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-primary ">View</button>
-    <button type="button" class="btn btn-primary">Done</button>
+    <a href="{{ route('show-promissory-qrcode') }}" class="button mr-4">View</a>
+    <button type="button" class="button">Done</button>
 </div>

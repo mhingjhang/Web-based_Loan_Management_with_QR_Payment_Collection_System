@@ -14,46 +14,17 @@
     color: #004EDA;
 }
 
-/* Your existing styles or reset styles can go here */
-
-/* Your existing styles or reset styles can go here */
-
-.fixed-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
+.button {
+    padding: 5px 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
 }
 
-.overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: none;
-}
-
-.overlay-bg {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(128, 128, 128, 0.75);
-}
-
-.content-container {
-    background-color: white;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 50rem;
-    position: relative;
-    /* Add this line */
-    z-index: 1;
-    /* Add this line */
+.button:hover {
+    color: #fff;
+    background-color: #0056b3;
 }
