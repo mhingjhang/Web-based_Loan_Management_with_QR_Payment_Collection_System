@@ -30,7 +30,7 @@
                 </div>
                 <p class="text-white fs-5 text-center" style="font-size: 10px; font-weight: 800;">Three Fe's Appliance Emporium</p>
                 <small class="text-white fs-6 text-wrap text-center"
-                    style="width: 20rem; ">Mhing Jhang</small>
+                    style="width: 20rem; ">Loan Management System</small>
             </div>
 
             <!-------------------- ------ Right Box ---------------------------->
