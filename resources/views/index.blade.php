@@ -13,12 +13,16 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	
 
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/tablestyle.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/approvalProgressBar.css') }}">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 	<title>Loan Managment System</title>
+
+	@yield('css_styles')
 
 	<style>
 		[x-cloak] { display: none !important; }
@@ -89,7 +93,7 @@
 	</section>
 	<!-- NAVBAR -->
 
-	<livewire:loan-approval-status-modal />
+
 
 
 
@@ -98,6 +102,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<script src="{{ asset('js/modal.js') }}"></script>
 	<script src="{{ asset('js/script.js') }}"></script>
+	<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+	@yield('javascript')
 
 	
 	@livewireScripts

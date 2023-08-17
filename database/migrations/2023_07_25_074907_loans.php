@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id('LoanID');
-            $table->unsignedBigInteger('BorrowerID');
             $table->decimal('Principal', 10, 2);
             $table->integer('DurationDays');
             $table->integer('DurationMonths');
@@ -24,6 +23,7 @@ return new class extends Migration
             $table->date('EffectiveDate')->nullable();
             $table->date('MaturityDate')->nullable();
             $table->string('Status');
+            $table->unsignedBigInteger('BorrowerID');
 
             $table->foreign('BorrowerID')->references('BorrowerID')->on('borrowers')->onDelete('cascade');
         });

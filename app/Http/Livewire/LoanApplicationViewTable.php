@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\LoanApplicationView;
+use App\Models\Approval;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
 class LoanApplicationViewTable extends DataTableComponent
@@ -13,28 +14,36 @@ class LoanApplicationViewTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('LoanApplicationID');
     }
 
     public function columns(): array
     {
        return [
-            Column::make("Borrower Name", "BorrowerName")
+            Column::make("Loan Application", "LoanApplicationID")
+                ->sortable()
+                ->searchable(),
+            Column::make("Client Name", "ClientName")
                 ->sortable()
                 ->searchable(),
             Column::make("Application Date", "ApplicationDate")
                 ->sortable(),
-            Column::make("Approval", "Approval")
+            Column::make("Approval", "ApprovalLevel")
                 ->sortable(),
             Column::make("Status", "Status")
                 ->sortable(),
             Column::make('Actions')
                 ->label(function($row, Column $column) {
-                    return view('livewire.table-actions');
+                    
+                    $approvals = Approval::with('approvalLevel')
+                                ->where('LoanApplicationID', $row->LoanApplicationID)
+                                ->get();
+                    
+                    return view('livewire.table-actions', ['approvals' => $approvals]);
                 }),
         ];
     }
-
+    
     public function filters(): array
     {
         return [
@@ -65,13 +74,13 @@ class LoanApplicationViewTable extends DataTableComponent
             ])
             ->filter(function(\Illuminate\Database\Eloquent\Builder $builder, string $value) {
                 if ($value === 'BorrowerandIncomeEvaluation') {
-                    $builder->where('Approval', 'Borrower and Income Evaluation');
+                    $builder->where('ApprovalLevel', 'Borrower and Income Evaluation');
                 } elseif ($value === 'PaymentHistory') {
-                    $builder->where('Approval', 'Payment History');
+                    $builder->where('ApprovalLevel', 'Payment History');
                 } elseif ($value === 'CIApproval') {
-                    $builder->where('Approval', 'CI Approval');
+                    $builder->where('ApprovalLevel', 'CI Approval');
                 } elseif ($value === 'DisbursementApproval') {
-                    $builder->where('Approval', 'Disbursement Approval');
+                    $builder->where('ApprovalLevel', 'Disbursement Approval');
                 }
             }),
 

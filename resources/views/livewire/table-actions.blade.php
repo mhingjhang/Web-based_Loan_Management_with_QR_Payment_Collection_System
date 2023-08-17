@@ -1,10 +1,11 @@
+
 <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="button" data-toggle="modal" data-target=".approvalstatus">View</button>
+    <button type="button" class="button" data-toggle="modal" data-target="#approval">View</button>
 </div>
 
-
 @section('modal_content')
-<div class="modal fade approvalstatus" tabindex="-1" role="dialog" aria-labelledby="approvalstatus" aria-hidden="true">
+
+<div class="modal fade approvalstatus" id="approval" tabindex="-1" role="dialog" aria-labelledby="approvalstatus" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="progressContainer">
@@ -13,7 +14,9 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
-        </div>
+        </div>    
+            
+
         <nav class="approvalProgressBar">
             <ul>
                 <li><a href="#" class="active">Borrower and Income Evaluation</a><p>Evaluating borrower and income information</p></li>
@@ -28,4 +31,5 @@
     </div>
   </div>
 </div>
+
 @endsection

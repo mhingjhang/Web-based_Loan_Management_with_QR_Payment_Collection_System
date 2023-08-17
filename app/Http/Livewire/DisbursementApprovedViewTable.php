@@ -18,7 +18,7 @@ class DisbursementApprovedViewTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Borrower Name", "BorrowerName")
+            Column::make("Borrower Name", "ClientName")
                 ->sortable()
                 ->searchable(),
             Column::make("Loan Amount", "Principal")

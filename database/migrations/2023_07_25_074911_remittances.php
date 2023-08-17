@@ -10,11 +10,11 @@ return new class extends Migration
     {
         Schema::create('remittances', function (Blueprint $table) {
             $table->id('RemittanceID');
-            $table->unsignedBigInteger('CollectorID');
             $table->datetime('RemittanceDate');
             $table->decimal('RemittanceAmount', 10, 2);
+            $table->unsignedBigInteger('EmployeeID');
 
-            $table->foreign('CollectorID')->references('CollectorID')->on('collectors')->onDelete('cascade');
+            $table->foreign('EmployeeID')->references('EmployeeID')->on('employees')->onDelete('cascade');
         });
     }
 

@@ -1,13 +1,31 @@
 @extends('index')
 @section('content')
 
+@section('css_stylesz')
+
+<style>
+
+    .wrap-text {
+        width: 200px;
+        height: auto;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    
+</style>
+
+
+@endsection
+
 <h1 class="title">Loan Approval</h1>
 
 <h1 class="subtitle">Promissory Note</h1>
 
+ @foreach ( $loanApplications as $loanApplication)
 <div class="card m-4 p-4">
     <div class="card-body">
-        @foreach ( $loanApplications as $loanApplication)
+       
             <h5 class="card-title text-center font-weight-bold">Promissory Note</h5>
 
             <p class="text-justified">
@@ -31,11 +49,31 @@
                 </div>
             </div>
             
-        @endforeach
+      
         
     </div>
 </div>
 
+<h1 class="subtitle">QR Code</h1>
 
+<div class="d-flex justify-content-center">
+    <div class="card" style="border-radius: 15px;">
+        <div class="card-body text-center" style="padding: 35px;">
+            <div class="qr-code">
+                @php
+                    $name = $loanApplication->loan->borrower->FirstName . ' ' . $loanApplication->loan->borrower->MiddleName . ' ' . $loanApplication->loan->borrower->LastName;
+                @endphp
+                {{ QrCode::size(200)->generate($name); }}
+            </div>
+            <div class="mt-3">
+                <p class="mb-0 h5 font-weight-bold wrap-text">Name: {{ $loanApplication->loan->borrower->FirstName }} {{ $loanApplication->loan->borrower->MiddleName }} {{ $loanApplication->loan->borrower->LastName }}</p>
+                <p class="h5">ID: 12345</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@endforeach
 
 @endsection

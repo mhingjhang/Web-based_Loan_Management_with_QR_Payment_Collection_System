@@ -10,17 +10,17 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id('PaymentID');
-            $table->unsignedBigInteger('BorrowerID');
-            $table->unsignedBigInteger('EmployeeID');
-            $table->unsignedBigInteger('CollectorID');
             $table->date('PaymentDate');
             $table->decimal('PaymentAmount', 10, 2);
-             $table->string('PaymentMethod');
+            $table->decimal('PrincipalEarned', 10, 2);
+            $table->decimal('InterestEarned', 10, 2);
+            $table->string('PaymentMethod');
             $table->string('Void');
+            $table->unsignedBigInteger('LoanID');
+            $table->unsignedBigInteger('EmployeeID');
 
-            $table->foreign('BorrowerID')->references('BorrowerID')->on('borrowers')->onDelete('cascade');
+            $table->foreign('LoanID')->references('LoanID')->on('loans')->onDelete('cascade');
             $table->foreign('EmployeeID')->references('EmployeeID')->on('employees')->onDelete('cascade');
-            $table->foreign('CollectorID')->references('CollectorID')->on('collectors')->onDelete('cascade');
         });
     }
 

@@ -1,4 +1,4 @@
-.table {
+.tableContainer {
    
     background-color: white;
     font-size: 13px;
@@ -8,7 +8,7 @@
     padding: 40px;
 }
 
-.table h1 {
+.tableContainer h1 {
     font-size: 18px;
     font-weight: 800;
     color: #004EDA;

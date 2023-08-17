@@ -18,12 +18,12 @@ class LoanApplicationApprovedViewTable extends DataTableComponent
     public function columns(): array
     {
          return [
-            Column::make("Borrower Name", "BorrowerName")
+            Column::make("Client Name", "ClientName")
                 ->sortable()
                 ->searchable(),
             Column::make("Application Date", "ApplicationDate")
                 ->sortable(),
-            Column::make("Approval", "Approval")
+            Column::make("Approval", "ApprovalLevel")
                 ->sortable(),
             Column::make("Status", "Status")
                 ->sortable(),

@@ -17,7 +17,7 @@
       </div>
       <div class="modal-body">
         
-           @if(isset($user))
+          @if(isset($user))
             <p>{{ $user }}</p>
           @else
             <p>User is not set</p>

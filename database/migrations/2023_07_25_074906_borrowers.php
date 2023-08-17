@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('borrowers', function (Blueprint $table) {
             $table->id('BorrowerID');
-            $table->unsignedBigInteger('BusinessID');
-            $table->unsignedBigInteger('UserAccountID');
             $table->string('FirstName');
             $table->string('MiddleName')->nullable();
             $table->string('LastName');
@@ -29,8 +27,13 @@ return new class extends Migration
             $table->string('BorrowerPhoto')->nullable();
             $table->string('ValidIDPhoto')->nullable();
             $table->string('Status');
+            $table->unsignedBigInteger('BusinessID');
+            $table->unsignedBigInteger('EmployeeID');
+            $table->unsignedBigInteger('UserAccountID');
 
             $table->foreign('BusinessID')->references('BusinessID')->on('businesses')->onDelete('cascade');
+            $table->foreign('EmployeeID')->references('EmployeeID')->on('employees')->onDelete('cascade');
+            $table->foreign('UserAccountID')->references('UserAccountID')->on('user_accounts')->onDelete('cascade');
         });
     }
 

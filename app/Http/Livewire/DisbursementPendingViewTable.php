@@ -12,13 +12,16 @@ class DisbursementPendingViewTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('LoanApplicationID')
+            ->setTableRowUrl(function($row) {
+                return view('livewire.table-actions-disbursement-pending', $row);
+            });
     }
 
     public function columns(): array
     {
         return [
-           Column::make("Borrower Name", "BorrowerName")
+           Column::make("Borrower Name", "ClientName")
                 ->sortable()
                 ->searchable(),
             Column::make("Loan Amount", "Principal")
