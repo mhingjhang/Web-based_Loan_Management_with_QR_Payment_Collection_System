@@ -38,9 +38,13 @@ Route::post('/loanapplication.store', [LoanApplicationController::class, 'store'
 
 
 Route::get('/loanapproval', [LoanApprovalController::class, 'show'])->name('loanapproval');
-Route::get('/loanapproval.Show-Promissory-QRCode', [LoanApprovalController::class, 'showPromissoryQRCode'])->name('show-promissory-qrcode');
+Route::get('/loanapproval/{id}/Show-Promissory-QRCode', [LoanApprovalController::class, 'showPromissoryQRCode'])->name('show-promissory-qrcode');
 
 Route::get('/loandisbursement', [LoanDisbursementController::class, 'show'])->name('loandisbursement');
+Route::post('/disburse/{id}', [LoanDisbursementController::class, 'store'])->name('disburse.store');
+Route::post('/addfund', [LoanDisbursementController::class, 'addfund'])->name('addfund');
+
+
 Route::get('/collection', [CollectionController::class, 'show'])->name('collection');
 Route::get('/borrower', [BorrowerController::class, 'show'])->name('borrower');
 Route::get('/loaninformation', [LoanInformationController::class, 'show'])->name('loaninformation');

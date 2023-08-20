@@ -13,4 +13,9 @@ class Business extends Model
     // Indicates if the model should be timestamped.
     public $timestamps = false;
 
+    public function borrower()
+    {
+        return $this->hasMany('App\Models\Borrower', 'BorrowerID');
+    }
+
 }

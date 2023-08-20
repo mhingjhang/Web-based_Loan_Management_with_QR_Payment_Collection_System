@@ -22,18 +22,18 @@
 
 <h1 class="subtitle">Promissory Note</h1>
 
- @foreach ( $loanApplications as $loanApplication)
+ @foreach ( $loans as $loan)
 <div class="card m-4 p-4">
     <div class="card-body">
        
             <h5 class="card-title text-center font-weight-bold">Promissory Note</h5>
 
             <p class="text-justified">
-                I, Mr. <span class="font-weight-bold">{{ $loanApplication->loan->borrower->FirstName }} {{ $loanApplication->loan->borrower->MiddleName }} {{ $loanApplication->loan->borrower->LastName }}</span>  hereby promise to pay <span class="font-weight-bold">Mr. Francis Raymund G. Pagota</span>, the amount of <span class="font-weight-bold">P 6,000 - Six Thousand Pesos</span> on term/s stated below.
+                I, Mr. <span class="font-weight-bold">{{ $loan->borrower->FirstName }} {{ $loan->borrower->MiddleName }} {{ $loan->borrower->LastName }}</span>  hereby promise to pay <span class="font-weight-bold">Mr. Francis Raymund G. Pagota</span>, the amount of <span class="font-weight-bold">P {{ $loan->Principal }}</span> on term/s stated below.
             </p>
 
             <p>
-                Daily Installments <span class="font-weight-bold">P 100 - Two Hundred Pesos</span> only. Within <span class="font-weight-bold">60 days</span> . Starting date <span class="font-weight-bold">July 31, 2022</span> , Due date <span class="font-weight-bold">September 29, 2022</span>.
+                Daily Installments <span class="font-weight-bold">P {{ $loan->DailyRepayment }}</span> only. Within <span class="font-weight-bold">{{ $loan->DurationDays }} days</span> . Starting date <span class="font-weight-bold">{{ $loan->EffectiveDate }}</span> , Due date <span class="font-weight-bold">{{ $loan->MaturityDate }}</span>.
             </p>
 
             <p>
@@ -61,13 +61,13 @@
         <div class="card-body text-center" style="padding: 35px;">
             <div class="qr-code">
                 @php
-                    $name = $loanApplication->loan->borrower->FirstName . ' ' . $loanApplication->loan->borrower->MiddleName . ' ' . $loanApplication->loan->borrower->LastName;
+                    $name = $loan->borrower->FirstName . ' ' . $loan->borrower->MiddleName . ' ' . $loan->borrower->LastName;
                 @endphp
                 {{ QrCode::size(200)->generate($name); }}
             </div>
             <div class="mt-3">
-                <p class="mb-0 h5 font-weight-bold wrap-text">Name: {{ $loanApplication->loan->borrower->FirstName }} {{ $loanApplication->loan->borrower->MiddleName }} {{ $loanApplication->loan->borrower->LastName }}</p>
-                <p class="h5">ID: 12345</p>
+                <p class="mb-0 h5 font-weight-bold wrap-text">Name: {{ $loan->borrower->FirstName }} {{ $loan->borrower->MiddleName }} {{ $loan->borrower->LastName }}</p>
+                <p class="h5">ID: {{ $loan->LoanID }}</p>
             </div>
         </div>
     </div>

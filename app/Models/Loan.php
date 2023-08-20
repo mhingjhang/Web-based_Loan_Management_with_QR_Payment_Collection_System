@@ -18,10 +18,7 @@ class Loan extends Model
         return $this->belongsTo('App\Models\Borrower', 'BorrowerID');
     }
 
-    public function loanApplication()
-    {
-        return $this->hasOne('App\Models\LoanApplication', 'LoanID');
-    }
+    
 
 
 }

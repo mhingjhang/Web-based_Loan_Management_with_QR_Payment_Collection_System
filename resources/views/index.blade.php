@@ -17,9 +17,10 @@
 	
 
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/tablestyle.css') }}">
+
 	<link rel="stylesheet" href="{{ asset('css/approvalProgressBar.css') }}">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="{{ asset('css/tablestyle.css') }}">
 	<title>Loan Managment System</title>
 
 	@yield('css_styles')

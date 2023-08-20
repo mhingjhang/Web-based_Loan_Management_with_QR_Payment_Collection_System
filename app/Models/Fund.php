@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Fund extends Model
 {
     use HasFactory;
+    
+    protected $table = 'funds';
+    protected $primaryKey = 'FundID';
+
+    // Indicates if the model should be timestamped.
+    public $timestamps = false;
+    
 }
