@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('InterestEarned', 10, 2);
             $table->string('PaymentMethod');
             $table->string('Void');
+            $table->boolean('isPaid');
             $table->unsignedBigInteger('LoanID');
             $table->unsignedBigInteger('EmployeeID');
 

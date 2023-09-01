@@ -20,53 +20,34 @@
         <!----------------------- Login Container -------------------------->
 
         <div class="row border rounded-5 p-3 bg-white shadow box-area">
-
-            <!--------------------------- Left Box ----------------------------->
-
-            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-                style="background: #004EDA;">
-                <div class="featured-image mb-3">
-                    <img src="{{ asset('images/logo2.png') }}" class="img-fluid" style="width: 100px;">
-                </div>
-                <p class="text-white fs-5 text-center" style="font-size: 10px; font-weight: 800;">Three Fe's Appliance Emporium</p>
-                <small class="text-white fs-6 text-wrap text-center"
-                    style="width: 20rem; ">Loan Management System</small>
-            </div>
-
-            <!-------------------- ------ Right Box ---------------------------->
-
-           <div class="col-md-6 right-box">
-                <div class="row align-items-center">
-                        <div class="header-text mb-4 text-center mt-5">
+            <div class="row align-items-center" style="padding-left: 2rem;">
+                        
+                        <div class="header-text mb-4 text-center">
+                            <img class="mt-4 mb-4" style="height: 4rem; width: auto;" src="{{ asset('images/logo.png') }}" alt="">
                             <h2 style="color: #004EDA; font-weight: 800;">Log In</h2>
-                            <p>Log in to Get Started</p>
                         </div>
                         
                         <form action="{{ route('login.validate') }}" method="POST">
                             @csrf
                             <div class="input-group mb-3">
-                                <input type="text" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+                                <input type="text" name="email" class="form-control form-control-lg bg-light fs-6" style="padding: 12px;" placeholder="Email address">
                             </div>
-                            <div class="input-group mb-1">
-                                <input type="password" name="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                            <div class="input-group mb-3">
+                                <input type="password" name="password" class="form-control form-control-lg bg-light fs-6" style="padding: 12px;" placeholder="Password">
                             </div>
-                            <div class="input-group mb-5 d-flex justify-content-between">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="formCheck">
-                                    <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
-                                </div>
+                            
+                            <div class="input-group mb-3">
+                                <button type="submit" class="btn btn-lg btn-primary w-100 fs-6" style="font-weight: bold">Login</button>
+                            </div>
+                            <div class="input-group mb-5 d-flex justify-content-center">
                                 <div class="forgot">
-                                    <small><a href="#">Forgot Password?</a></small>
+                                    <small><a href="#" style="font-weight: bold; text-decoration: none;">Forgot Password?</a></small>
                                 </div>
-                            </div>
-                            <div class="input-group mb-5">
-                                <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
                             </div>
                         </form>
-                    </div>
-                </div>
-
+            </div>
         </div>
+      
     </div>
 
 </body>

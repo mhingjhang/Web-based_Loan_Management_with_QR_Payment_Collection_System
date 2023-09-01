@@ -16,10 +16,9 @@ class DatabaseSeeder extends Seeder
             ApprovalLevelSeeder::class,
             EmployeeSeeder::class,
             UserAccountSeeder::class,
-            LoanApplicationSeeder::class,
             ClientSeeder::class,
             ClientBusinessSeeder::class,
-            ApprovalSeeder::class,
+            AreaSeeder::class,
         ]);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoanApplication extends Model
 {
-     use HasFactory;
+    use HasFactory;
     protected $table = 'loan_applications';
     protected $primaryKey = 'LoanApplicationID';
 

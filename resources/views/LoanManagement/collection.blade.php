@@ -4,224 +4,89 @@
 
 <h1 class="title">Collection</h1>
 
+<section class="tableContainer">
+    <!-- Approved Loan Applications Table -->
+    <h1>Approved Loan Applications</h1>
+    <table id='collectionTable'>
+        <thead>
+            <tr>
+                <th>Collector</th>
+                <th>Date</th>
+                <th>Actual Recorded Remittance</th>
+                <th>Actual Amount Received</th>
+                <th>Balance</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+            <tbody>
+                @foreach ($collections as $collection)
+                    
+                        <tr>
+                            <td>
+                                <div class="profile-info">
+                                    <img src="{{ asset('storage/images/profilepic.png') }}" alt="">
+                                    <div class="name-id">
+                                        <div class="name">{{ $collection->CollectorName }} {{ $collection->EmployeeID }}</div>
+                                        <div class="id">Area: {{ $collection->AreaAssigned }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ $currentDate}}</td>
+                            <td>₱{{ $collection->ActualRecordedAmount }}</td>
+                            <td>₱{{ $collection->ActualAmountReceived }}</td>
+                            <td>{{ $collection->Balance }}</td>
+                            <td>
+                                <button data-toggle="modal" data-target="#collection_{{ $collection->EmployeeID }}" class="button">Add</a>
+                            </td>
+                        </tr>
+                   
+                @endforeach
+            </tbody>
+    </table>
 
-<section class="table">
-    <section class="table__header">
-        <h1>Remittances</h1>
-        <div class="sort-filter-search">
-            <div class="sort-select">
-                <span>Sort By:</span>  
-                <select>
-                    <option value="ascending">Ascending</option>
-                    <option value="descending">Descending</option>
-                </select>
-            </div>
-            <div class="filter-status">
-                <span>Filter by Date:</span>  
-                <select>
-                    <option value="all">All</option>
-                    <option value="approved">Latest</option>
-                    <option value="pending">Oldest</option>
-                    <option value="rejected">Custom</option>
-                </select>
-            </div>
-            <div class="filter-evaluation">
-                <span>Filter by Evaluation Area:</span>
-                <select>
-                    <option value="all">All</option>
-                    <option value="income_evaluation">Koronadal</option>
-                    <option value="payment_history_evaluation">Polomolok</option>
-                    <option value="credit_investigator_approval">Tupi</option>
-                    <option value="disbursement_approval">Surallah</option>
-                </select>
-            </div>
-            <div class="search-bar">
-                <input type="text" id="search" placeholder="Search...">
+@section('modal_content')
+    @foreach ($collections as $collection)
+        <div class="modal fade" id="collection_{{ $collection->EmployeeID }}" tabindex="-1" role="dialog" aria-labelledby="collection" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="progressContainer">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add Remittance</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="container-fluid p-4">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col text-center">
+                                    <div class="modal-image">
+                                        <img src="{{ asset('storage/images/profilepic.png') }}" alt="">
+                                    </div>
+                                    <h6 class="name font-weight-bold mt-2" style="font-size: 18px;">{{ $collection->CollectorName}}</h6>
+                                    <p>{{ $collection->AreaAssigned }}</p>
+                                    <form action="{{ route('collection.store', ['id' => $collection->EmployeeID]) }}" method="post">
+                                        @csrf
+                                        <div class="d-flex align-items-center mt-3">
+                                            <label for="collectionAmount" class="form-label pr-2 font-weight-bold">Amount</label>
+                                            <input type="text" class="form-control" id="collectionAmount" name="collectionAmount" placeholder="Enter Amount" required>
+                                        </div>
+                                        <button type="submit" class="button mt-3" style="width: 100%; font-size: 15px;">Add Remittance</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-
-    <br>
-    <section class="table__body">
-        <table>
-            <thead>
-                <tr>
-                    <th> Collector</th>
-                    <th> Area</th>
-                    <th> Date</th>
-                    <th> Actual Recorded Remittance</th>
-                    <th> Actual Amount Received</th>
-                    <th> Balance</th>
-                    <th> Actions </th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-                   <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Zinzu Chan Lee.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">Zinzu Chan Lee</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td> Koronadal </td>
-                    <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td>
-                        <button class="view-button">View</button>
-
-                    </td>
-                </tr>
-
-            
-
-               <tr>
-                    <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Jeet Saru.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">Jeet Saru</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td> Polomolok </td>
-                    <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td><button class="view-button">View</button></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Sonal Gharti.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">Sonal Gharti</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td> Surallah </td>
-                     <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td><button class="view-button">View</button></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Alson GC.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">Alson GC</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td> Tupi </td>
-                     <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td><button class="view-button">View</button></td>
-                </tr>
-                <!-- Additional rows -->
-                <tr>
-                    <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Jeet Saru.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">John Doe</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td> Koronadal </td>
-                    <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td><button class="view-button">View</button></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Sonal Gharti.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">Jane Smith</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td> Surallah </td>
-                     <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td><button class="view-button">View</button></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Zinzu Chan Lee.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">Michael Johnson</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                     <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td><button class="view-button">View</button></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Sarita Limbu.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">Emily Davis</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td> Tupi </td>
-                     <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td><button class="view-button">View</button></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/Alson GC.jpg') }}" alt="">
-                            <div class="name-id">
-                                <div class="name">Mark Anderson</div>
-                                <div class="id">ID: XXXXXXXX</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td> Polomolok </td>
-                     <td> 07-21-2023 </td>
-                    <td>6,000</td>
-                    <td> 6,000 </td>
-                    <td> 0 </td>
-                    <td><button class="view-button">View</button></td>
-                </tr>
-
-            </tbody>
-        </table>
-    </section>
-    
+    @endforeach
+@endsection
 </section>
 
+@section('javascript')
+    <script>
+        let table = new DataTable('#collectionTable');
+    </script>
+@endsection
 
 @endsection

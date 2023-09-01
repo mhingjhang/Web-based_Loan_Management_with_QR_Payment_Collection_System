@@ -10,4 +10,9 @@ class Area extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function collectorsite()
+    {
+        return $this->hasMany(CollectorSite::class, 'AreaID', 'AreaID');
+    }
 }

@@ -46,8 +46,16 @@ Route::post('/addfund', [LoanDisbursementController::class, 'addfund'])->name('a
 
 
 Route::get('/collection', [CollectionController::class, 'show'])->name('collection');
+Route::post('/collection/{id}', [CollectionController::class, 'store'])->name('collection.store');
+
 Route::get('/borrower', [BorrowerController::class, 'show'])->name('borrower');
+Route::get('/borrower/{id}', [BorrowerController::class, 'showBorrowerInformation'])->name('showBorrowerInformation');
+
 Route::get('/loaninformation', [LoanInformationController::class, 'show'])->name('loaninformation');
+Route::get('/loaninformation/{id}', [LoanInformationController::class, 'showLoanInformation'])->name('showLoanInformation');
+Route::get('/paymenthistory/{id}', [LoanInformationController::class, 'showPaymentHistory'])->name('showPaymentHistory');
+Route::get('/paymentamortization/{id}', [LoanInformationController::class, 'showPaymentAmortization'])->name('showPaymentAmortization');
+
 Route::get('/repayment', [RepaymentController::class, 'show'])->name('repayment');
 
 

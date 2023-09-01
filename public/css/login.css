@@ -15,13 +15,11 @@ body {
 /*------------ Login container ------------*/
 
 .box-area {
-    width: 850px;
+    width: 400px;
 }
 
-/*------------ Right box ------------*/
-
-.right-box {
-    padding: 40px 30px 40px 40px;
+.input-size{
+    width: 100%;
 }
 
 /*------------ Custom Placeholder ------------*/

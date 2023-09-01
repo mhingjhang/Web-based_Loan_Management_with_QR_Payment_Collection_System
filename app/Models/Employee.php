@@ -11,4 +11,19 @@ class Employee extends Model
 
     public $timestamps = false;
 
+    protected $table = 'employees';
+    protected $primaryKey = 'EmployeeID';
+
+    public function collectorsite()
+    {
+        return $this->hasMany(CollectorSite::class, 'CollectorSiteID', 'CollectorSiteID');
+    }
+
+    public function payment()
+    {
+        return $this->hasMany(Payment::class, 'PaymentID', 'PaymentID');
+    }
+
+    
+
 }

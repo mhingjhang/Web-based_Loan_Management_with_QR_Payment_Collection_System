@@ -29,7 +29,7 @@ class LoanApprovalController extends Controller
             ->orderByDesc('created_at')
             ->get();
 
-             $loans = Loan::with('borrower', 'borrower.business')->get();
+        $loans = Loan::with('borrower', 'borrower.business')->get();
 
         return view('LoanManagement.loanapproval', ['approvals' => $approvals, 'loans' => $loans]);
     }

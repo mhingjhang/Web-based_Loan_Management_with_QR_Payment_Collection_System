@@ -48,6 +48,9 @@
 					</div>
 				</div>
 
+			</div>
+
+			<div class="info-data">
 				{{-- Open Loans Card --}}
 				<div class="card">
 					<div class="head">
@@ -94,7 +97,9 @@
 				</div>
 			</div>
 
-            <div class="data">
+		</div>
+
+            		<div class="data">
 						<div class="content-data">
 							<div class="head">
 								<h3>Disbursement</h3>
@@ -127,7 +132,10 @@
 							<div class="chart">
 								<div id="chart2"></div>
 							</div>
-						</div>	
+						</div>
+					</div>
+
+					<div class="data">
 
                         <div class="content-data">
 							<div class="head">
@@ -161,7 +169,8 @@
 							<div class="chart">
 								<div id="chart4"></div>
 							</div>
-						</div>	
+						</div>
+					</div>	
 
 
 			</div>

@@ -18,6 +18,11 @@ class Loan extends Model
         return $this->belongsTo('App\Models\Borrower', 'BorrowerID');
     }
 
+    public function payment()
+    {
+        return $this->hasMany(Payment::class, 'PaymentID', 'PaymentID');
+    }
+
     
 
 

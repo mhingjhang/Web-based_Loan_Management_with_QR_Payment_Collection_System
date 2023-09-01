@@ -14,7 +14,7 @@
 
 <div class="info-data">
 
-
+    {{-- Dashboard Card --}}
     <div class="card">
         <div class="head">
             <div>
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-
+    {{-- Disbursement Card --}}
     <div class="card">
         <div class="head">
             <div>
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-
+    {{-- Total Collection Card --}}
     <div class="card">
         <div class="head">
             <div>
@@ -44,6 +44,20 @@
         </div>
     </div>
 
+    {{-- Accounts Receivable Card --}}
+    <div class="card">
+        <div class="head">
+            <div>
+                <p>Total Balance</p>
+                <h2>{{ $totalBalance }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="info-data">
+    {{-- Open Loans Card --}}
     <div class="card">
         <div class="head">
             <div>
@@ -53,12 +67,39 @@
         </div>
     </div>
 
+    {{-- Fully Paid Loans Card --}}
+    <div class="card">
+        <div class="head">
+            <div>
+                <p>No. of Missed Payment</p>
+                <h2>{{ $countOfMissedPayments }}</h2>
+            </div>
+        </div>
+    </div>
 
+    {{-- Restructured Loans Card --}}
+    <div class="card">
+        <div class="head">
+            <div>
+                <p>Remaining Days</p>
+                <h2>{{ $remainingDays }}</h2>
+            </div>
+        </div>
+    </div>
+
+    {{-- Defaulted Loans Card --}}
+    <div class="card">
+        <div class="head">
+            <div>
+                <p>Maturity Date</p>
+                <h2>{{ $remainingDays }}</h2>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-
-<br>
+        <br>
 
 <section class="tableContainer">
     <table id='paymentHistoryTable'>
@@ -72,22 +113,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($repayments as $repayment)
+            @foreach ($payments as $payment)
                 <tr>
                     <td>
                         <div class="profile-info">
-                            <img src="{{ asset('storage/images/' . ($repayment->loan->borrower->BorrowerPhoto ? $repayment->loan->borrower->BorrowerPhoto : 'profilepic.png')) }}" alt="">
+                            <img src="{{ asset('storage/images/' . ($payment->loan->borrower->BorrowerPhoto ? $payment->loan->borrower->BorrowerPhoto : 'profilepic.png')) }}" alt="">
                             <div class="name-id">
-                                <div class="name">{{ $repayment->loan->borrower->FirstName }} {{ $repayment->loan->borrower->LastName }}</div>
-                                <div class="id">Loan ID: {{ $repayment->loan->LoanID }}</div>
+                                <div class="name">{{ $payment->loan->borrower->FirstName }} {{ $payment->loan->borrower->LastName }}</div>
+                                <div class="id">Loan ID: {{ $payment->loan->LoanID }}</div>
                             </div>
                         </div>
                     </td>
-                    <td>{{ $repayment->PaymentDate}}</td>
-                    <td>₱{{ $repayment->PaymentMethod }}</td>
-                    <td>₱{{ $repayment->PaymentAmount }}</td>
-                    <td>{{ $repayment->employee->FirstName}} {{ $repayment->employee->LastName}}</td>
-                    
+                    <td>{{ $payment->PaymentDate}}</td>
+                    <td>₱{{ $payment->PrincipalEarned }}</td>
+                    <td>₱{{ $payment->InterestEarned }}</td>
+                    <td>₱{{ $payment->PaymentAmount }}</td>
                 </tr>
             @endforeach
         </tbody>
