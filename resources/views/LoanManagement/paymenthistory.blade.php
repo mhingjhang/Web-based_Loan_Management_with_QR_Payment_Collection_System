@@ -140,10 +140,6 @@
         <script>
             let table = new DataTable('#paymentHistoryTable');
 
-            function goBack() {
-                window.history.back();
-            }
-
         </script>
     @endsection
 

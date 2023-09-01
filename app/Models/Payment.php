@@ -14,6 +14,10 @@ class Payment extends Model
     protected $table = 'payments';
     protected $primaryKey = 'PaymentID';
 
+    protected $fillable = [
+        'Void',
+    ];
+
 
     public function loan()
     {

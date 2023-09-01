@@ -57,7 +57,8 @@ Route::get('/paymenthistory/{id}', [LoanInformationController::class, 'showPayme
 Route::get('/paymentamortization/{id}', [LoanInformationController::class, 'showPaymentAmortization'])->name('showPaymentAmortization');
 
 Route::get('/repayment', [RepaymentController::class, 'show'])->name('repayment');
-
-
+Route::get('/repayment/void-transaction', [RepaymentController::class, 'voidTransactions'])->name('showVoidTransaction');
+Route::get('/repayment/{id}', [RepaymentController::class, 'voidRepayment'])->name('voidRepayment');
+Route::get('/repayment/approve-void/{id}', [RepaymentController::class, 'approveVoid'])->name('approveVoid');
 
 

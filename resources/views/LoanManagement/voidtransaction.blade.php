@@ -8,60 +8,16 @@
     @endif
 
 <div class="d-flex justify-content-between align-items-center">
-    <h1 class="title">Repayment</h1>
+    <h1 class="title">Void Transactions</h1>
     <div class="d-flex">
+        <button class="btn btn-primary mr-3" style="border-radius: 10px;" onclick="goBack()">Back</button>
         <button class="btn btn-primary mr-3" style="border-radius: 10px;">Add Repayment</button>
         
-      <a href="{{route('showVoidTransaction')}}" class="btn btn-primary mr-3" style="border-radius: 10px;"">Void Tranactions</a>
+      <a href="{{route('showVoidTransaction')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Void Tranactions</a>
        
         <button class="btn btn-primary" style="border-radius: 10px;">Print</button>
     </div>
     
-</div>
-
-
-<div class="info-data">
-
-
-    <div class="card">
-        <div class="head">
-            <div>
-                <p>Total Principal Earned</p>
-                <h2>{{ $totalPrincipalEarned }}</h2>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <div class="head">
-            <div>
-                <p>Total Interest Earned</p>
-                <h2>{{ $totalInterestEarned }}</h2>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card">
-        <div class="head">
-            <div>
-                <p>Total Payment</p>
-                <h2>{{ $totalPayment }}</h2>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="head">
-            <div>
-                <p>No. of Payments</p>
-                <h2>{{ $countOfPayments }}</h2>
-            </div>
-        </div>
-    </div>
-
-
 </div>
 
 <br>
@@ -80,9 +36,6 @@
         </thead>
         <tbody>
             @foreach ($repayments as $repayment)
-                @if ($repayment->Void === 'Pending')
-                    @continue
-                @endif
                 <tr>
                     <td>
                         <div class="profile-info">
@@ -98,7 +51,7 @@
                     <td>₱{{ $repayment->PaymentAmount }}</td>
                     <td>{{ $repayment->employee->FirstName}} {{ $repayment->employee->LastName}}</td>
                     <td>
-                        <button class="button" data-toggle="modal" data-target="#repayment_{{ $repayment->PaymentID }}">Void</button>
+                        <button class="button" data-toggle="modal" data-target="#repayment_{{ $repayment->PaymentID }}">Approve Void</button>
                     </td>
                     
                 </tr>
@@ -128,7 +81,7 @@
                 
                 <div class="modal-footer">
                     @if ($repayment->PaymentID)
-                        <a href="{{ route('voidRepayment', ['id' => $repayment->PaymentID]) }}" class="btn btn-primary">Void</a>
+                        <a href="{{ route('approveVoid', ['id' => $repayment->PaymentID]) }}" class="btn btn-primary">Approve Void</a>
                     @else
                         <span class="text-danger">No ID available</span>
                     @endif
@@ -141,19 +94,9 @@
 @endforeach
 @endsection
 
-
-
-
-
-
-
 @section('javascript')
         <script>
             let table = new DataTable('#repaymentTable');
-
-            function goBack() {
-                window.history.back();
-            }
 
         </script>
 @endsection
