@@ -1,0 +1,89 @@
+/* Loan Application */
+
+
+.repaymentContainer {
+    flex: 1;
+}
+
+
+.repaymentContainer .row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.repaymentContainer label {
+    font-size: 15px;
+    font-weight: 800;
+
+}
+
+.repaymentContainer input {
+    text-align: right;
+    font-weight: 500;
+    border: none;
+}
+
+.repayment-calculation-form {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.repayment-calculation-form .r {
+    display: flex;
+    justify-content: space-between;
+}
+
+.repayment-calculation-form .r input {
+    text-align: right !important;
+    font-weight: 800;
+    border: none;
+    font-size: 17px;
+    color: #004EDA;
+
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.container .form-control {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+.repaymentContainer .form-control {
+
+    padding: 5px;
+    border: 1px solid #a7a7a7;
+    background-color: white;
+}
+
+
+.repayment-calculation-form input[type="text"] {
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.repayment-calculation-form hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+/* LoanApplicationContent */

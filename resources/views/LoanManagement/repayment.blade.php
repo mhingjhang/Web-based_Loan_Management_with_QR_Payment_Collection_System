@@ -10,9 +10,9 @@
 <div class="d-flex justify-content-between align-items-center">
     <h1 class="title">Repayment</h1>
     <div class="d-flex">
-        <button class="btn btn-primary mr-3" style="border-radius: 10px;">Add Repayment</button>
-        
-      <a href="{{route('showVoidTransaction')}}" class="btn btn-primary mr-3" style="border-radius: 10px;"">Void Tranactions</a>
+
+        <a href="{{route('showAddRepayment')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Add Repayment</a>
+        <a href="{{route('showVoidTransaction')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Void Tranactions</a>
        
         <button class="btn btn-primary" style="border-radius: 10px;">Print</button>
     </div>
@@ -105,8 +105,6 @@
             @endforeach
         </tbody>
     </table>
-
-
 </section>
 
 
