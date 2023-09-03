@@ -1,36 +1,21 @@
 <?php
 include 'connection.php';
 
-if (isset($_GET['LoanApplicationID'])) {
-    $loanApplicationID = intval($_GET['LoanApplicationID']);
+// Query to retrieve loan application data
+$sql = "SELECT * FROM loan_applications";
 
-    $sql = "SELECT * FROM loan_applications WHERE LoanApplicationID = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $loanApplicationID);
-    $stmt->execute();
-    $result = $stmt->get_result();
+$result = $conn->query($sql);
 
-    // Fetch the loan information.
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $loanInfo = array(
-            'Principal' => $row['Principal'],
-            'Interest' => $row['Interest'],
-            'TotalAmountDue' => $row['TotalAmountDue'],
-            'DurationMonths' => $row['DurationMonths'],
-            'DailyRepayment' => $row['DailyRepayment'],
-            'ServiceFee' => $row['ServiceFee']
-        );
-        
+if ($result->num_rows > 0) {
+    // Output data of each row as JSON
+    $loanApplications = array();
 
-        echo json_encode($loanInfo);
-    } else {
-        echo json_encode(array('error' => 'No loan information found.'));
+    while ($row = $result->fetch_assoc()) {
+        $loanApplications[] = $row;
     }
 
-    $stmt->close();
-    $conn->close();
+    echo json_encode($loanApplications);
 } else {
-    echo json_encode(array('error' => 'LoanApplicationID parameter missing.'));
+    echo "No loan applications found.";
 }
 ?>

@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             "LastName" => $row["LastName"],
             "Email" => $row["Email"],
             "ContactNumber" => $row["ContactNumber"],
-            "CollectionArea" => $row["CollectionArea"],
             "ProfilePicture" => $row["ProfilePicture"]
             // Add other fields as needed
         );

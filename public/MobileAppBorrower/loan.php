@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $totalAmountDue = $_POST['TotalAmountDue'];
     $dailyRepayment = $_POST['DailyRepayment'];
     $serviceFee = $_POST['ServiceFee'];
-    $disbursement = $_POST['Disbursement'];
+    
 
     // Insert data into the table (you should replace 'your_table_name' with your actual table name)
-    $insertQuery = "INSERT INTO loans (Principal, DurationDays, DurationMonths, Interest, InterestRate, TotalAmountDue, DailyRepayment, ServiceFee, Disbursement) VALUES ('$principal', '$durationDays', '$durationMonths', '$interest', '$interestRate', '$totalAmountDue', '$dailyRepayment', '$serviceFee', '$disbursement')";
+    $insertQuery = "INSERT INTO loan_applications (Principal, DurationDays, DurationMonths, Interest, InterestRate, TotalAmountDue, DailyRepayment, ServiceFee) VALUES ('$principal', '$durationDays', '$durationMonths', '$interest', '$interestRate', '$totalAmountDue', '$dailyRepayment', '$serviceFee')";
     
     if (mysqli_query($conn, $insertQuery)) {
         // Data insertion successful, return success response

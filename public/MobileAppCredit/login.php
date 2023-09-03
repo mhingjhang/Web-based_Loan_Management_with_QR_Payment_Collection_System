@@ -1,8 +1,6 @@
 <?php
 include 'connection.php';
 
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $UserName = $_POST["UserName"];
     $Password = $_POST["Password"];

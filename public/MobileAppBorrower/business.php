@@ -12,7 +12,7 @@ $cityMunicipality = $_POST['City_Municipality'];
 $province = $_POST['Province'];
 
 // SQL query to insert data
-$sql = "INSERT INTO businesses (BusinessName, AverageDailyIncome, TypeOfBusiness, Street, Barangay, City_Municipality, Province)
+$sql = "INSERT INTO client_businesses (BusinessName, AverageDailyIncome, TypeOfBusiness, Street, Barangay, City_Municipality, Province)
         VALUES ('$businessName', '$averageDailyIncome', '$typeOfBusiness', '$street', '$barangay', '$cityMunicipality', '$province')";
 
 // Execute the query

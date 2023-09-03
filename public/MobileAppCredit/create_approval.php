@@ -1,33 +1,37 @@
 <?php
- include 'connection.php';
- 
-if (isset($_POST['ApprovalLevelID'], $_POST['LoanApplicationID'], $_POST['created_at'], $_POST['updated_at'])) {
-    // Sanitize and store the POST data
-    $approvalLevelID = intval($_POST['ApprovalLevelID']);
-    $loanApplicationID = intval($_POST['LoanApplicationID']);
+
+include 'connection.php';
+
+// Check if the request method is POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve data from the POST request
+    $approvalLevelID = $_POST['ApprovalLevelID'];
+    $loanApplicationID = $_POST['LoanApplicationID'];
     $created_at = $_POST['created_at'];
     $updated_at = $_POST['updated_at'];
 
-    // Insert the new approval record into your database
-    // Example SQL query (replace with your actual table name and column names):
-    $sql = "INSERT INTO approvals (ApprovalLevelID, LoanApplicationID, created_at, updated_at)
-            VALUES ($approvalLevelID, $loanApplicationID, '$created_at', '$updated_at')";
+    // Prepare and execute the SQL query to insert the approval record
+    $sql = "INSERT INTO approvals (ApprovalLevelID, LoanApplicationID, created_at, updated_at) 
+            VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iiss", $approvalLevelID, $loanApplicationID, $created_at, $updated_at);
 
-    // Execute the SQL query
-    // Example: $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        // Approval record inserted successfully
-        http_response_code(201); // Created
-        echo json_encode(array("message" => "Approval created successfully."));
+    if ($stmt->execute()) {
+        // Successfully inserted the approval record
+        $response = array("status" => "success", "message" => "Approval record created successfully.");
+        echo json_encode($response);
     } else {
-        // Error inserting approval record
-        http_response_code(500); // Internal Server Error
-        echo json_encode(array("message" => "Unable to create approval."));
+        // Error occurred while inserting the record
+        $response = array("status" => "error", "message" => "Failed to create approval record.");
+        echo json_encode($response);
     }
+
+    // Close the database connection
+    $stmt->close();
+    $conn->close();
 } else {
-    // Missing POST parameters
-    http_response_code(400); // Bad Request
-    echo json_encode(array("message" => "Missing required parameters."));
+    // Invalid request method
+    $response = array("status" => "error", "message" => "Invalid request method.");
+    echo json_encode($response);
 }
 ?>
