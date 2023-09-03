@@ -25,7 +25,7 @@
                     <tr>
                         <td>
                             <div class="profile-info">
-                                <img src="{{ asset('storage/images/' . $approval->loanApplication->client->BorrowerPhoto) }}" alt="">
+                                <img src="{{ asset('images/' . $approval->loanApplication->client->BorrowerPhoto) }}" alt="">
                                 <div class="name-id">
                                     <div class="name">{{ $approval->loanApplication->client->FirstName }} {{ $approval->loanApplication->client->LastName }}</div>
                                     <div class="id">Loan Application ID: {{ $approval->loanApplication->LoanApplicationID }}</div>
@@ -114,7 +114,7 @@
                     <tr>
                         <td>
                             <div class="profile-info">
-                                <img src="{{ asset('storage/images/' . $loan->borrower->BorrowerPhoto) }}" alt="">
+                                <img src="{{ asset('images/' . $loan->borrower->BorrowerPhoto) }}" alt="">
                                 <div class="name-id">
                                     <div class="name">{{ $loan->borrower->FirstName }} {{ $loan->borrower->LastName }}</div>
                                     <div class="id">Loan ID: {{ $loan->LoanID }}</div>

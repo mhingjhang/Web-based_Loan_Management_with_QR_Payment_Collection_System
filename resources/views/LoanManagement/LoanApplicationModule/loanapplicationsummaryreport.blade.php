@@ -72,14 +72,14 @@
             <div class="card">
                 <div class="head">
                     <h4 style="font-weight: 800; color: #004EDA;">Borrower Photo</h4>
-                    <img src="{{ asset('storage/images/' . $loan_application['borrower_photo']) }}" alt="Profile Picture">
+                    <img src="{{ asset('images/' . $loan_application['borrower_photo']) }}" alt="Profile Picture">
                 </div>
             </div>
 
             <div class="card">
                 <div class="head">
                     <h4 style="font-weight: 800; color: #004EDA;">Borrower ID</h4>
-                    <img src="{{ asset('storage/images/' . $loan_application['id_photo']) }}" alt="Profile Picture">
+                    <img src="{{ asset('images/' . $loan_application['id_photo']) }}" alt="Profile Picture">
                 </div>
             </div>
 
@@ -90,14 +90,14 @@
             <div class="card">
                 <div class="head">
                     <h4 style="font-weight: 800; color: #004EDA;">Establishment Photo</h4>
-                    <img src="{{ asset('storage/images/' . $loan_application['establishment_photo']) }}" alt="Profile Picture">
+                    <img src="{{ asset('images/' . $loan_application['establishment_photo']) }}" alt="Profile Picture">
                 </div>
             </div>
 
             <div class="card">
                 <div class="head">
                     <h4 style="font-weight: 800; color: #004EDA;">Business Permit</h4>
-                    <img src="{{ asset('storage/images/' . $loan_application['business_permit']) }}" alt="Profile Picture">
+                    <img src="{{ asset('images/' . $loan_application['business_permit']) }}" alt="Profile Picture">
                 </div>
             </div>
 

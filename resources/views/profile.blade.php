@@ -8,11 +8,11 @@
     @endif
 
 <div class="d-flex justify-content-between align-items-center">
-    <h1 class="title">Repayment</h1>
+    <h1 class="title">Profile</h1>
     <div class="d-flex">
 
-        <a href="{{route('showAddRepayment')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Edit Account</a>
-        <a href="{{route('showVoidTransaction')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Create Account</a>
+        <a href="#" class="btn btn-primary mr-3" style="border-radius: 10px;">Edit Account</a>
+        <a href="{{route('showCreateAccount')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Create Account</a>
        
         <button class="btn btn-primary" style="border-radius: 10px;">Print</button>
     </div>

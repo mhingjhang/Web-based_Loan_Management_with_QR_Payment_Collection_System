@@ -8,6 +8,7 @@ use App\Models\ClientBusiness;
 use App\Models\Client;
 use App\Models\LoanApplication;
 use App\Models\Approval;
+use App\Models\Employee;
 
 
 class LoanApplicationController extends Controller
@@ -44,44 +45,31 @@ class LoanApplicationController extends Controller
             'business_permit' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Handle file upload for the profile picture
         if ($request->hasFile('borrower_photo')) {
             $file = $request->file('borrower_photo');
-            // Generate a unique name for the file to prevent conflicts
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            // Move the file to the storage directory (you may configure this as needed)
-            Storage::disk('public')->putFileAs('images', $file, $fileName);
-            // Save the file name in the form data
+            $file->move(public_path('images'), $fileName);
             $validated['borrower_photo'] = $fileName;
         }
 
         if ($request->hasFile('id_photo')) {
             $file = $request->file('id_photo');
-            // Generate a unique name for the file to prevent conflicts
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            // Move the file to the storage directory (you may configure this as needed)
-            Storage::disk('public')->putFileAs('images', $file, $fileName);
-            // Save the file name in the form data
+            $file->move(public_path('images'), $fileName);
             $validated['id_photo'] = $fileName;
         }
 
         if ($request->hasFile('establishment_photo')) {
             $file = $request->file('establishment_photo');
-            // Generate a unique name for the file to prevent conflicts
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            // Move the file to the storage directory (you may configure this as needed)
-            Storage::disk('public')->putFileAs('images', $file, $fileName);
-            // Save the file name in the form data
+            $file->move(public_path('images'), $fileName);
             $validated['establishment_photo'] = $fileName;
         }
 
         if ($request->hasFile('business_permit')) {
             $file = $request->file('business_permit');
-            // Generate a unique name for the file to prevent conflicts
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            // Move the file to the storage directory (you may configure this as needed)
-            Storage::disk('public')->putFileAs('images', $file, $fileName);
-            // Save the file name in the form data
+            $file->move(public_path('images'), $fileName);
             $validated['business_permit'] = $fileName;
         }
 
@@ -149,10 +137,11 @@ class LoanApplicationController extends Controller
         $client->Status = 'Active'; // Update as needed
         $client->save();
 
+        $randomEmployee = Employee::where('Position', 'Credit Investigator')->inRandomOrder()->first();
 
         $loanApplication = new LoanApplication;
         $loanApplication->ClientID = $client->ClientID;
-        $loanApplication->EmployeeID = 8; 
+        $loanApplication->EmployeeID = $randomEmployee->EmployeeID; 
         $loanApplication->ApplicationDate = now(); 
         $Interest = ($validatedData['loanAmount'] * 0.10) * 2;
         $loanApplication->Principal = $validatedData['loanAmount'];
@@ -168,6 +157,16 @@ class LoanApplicationController extends Controller
 
         $approval = new Approval;
         $approval->ApprovalLevelID = 1;
+        $approval->LoanApplicationID = $loanApplication->LoanApplicationID;
+        $approval->save();
+
+        $approval = new Approval;
+        $approval->ApprovalLevelID = 2;
+        $approval->LoanApplicationID = $loanApplication->LoanApplicationID;
+        $approval->save();
+
+        $approval = new Approval;
+        $approval->ApprovalLevelID = 3;
         $approval->LoanApplicationID = $loanApplication->LoanApplicationID;
         $approval->save();
 

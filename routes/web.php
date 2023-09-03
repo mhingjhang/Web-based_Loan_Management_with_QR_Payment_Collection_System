@@ -73,5 +73,8 @@ Route::post('/collector/{id}', [CollectorController::class, 'assignArea'])->name
 
 
 Route::get('/profile', [UserManagementController::class, 'show'])->name('profile');
+Route::post('/profile/createAccount', [UserManagementController::class, 'createAccount'])->name('createAccount');
+Route::get('/profile/create-account', [UserManagementController::class, 'showCreateAccount'])->name('showCreateAccount');
 Route::get('/profile/deactivate/{id}', [UserManagementController::class, 'deactivateAccount'])->name('deactivateAccount');
+
 
