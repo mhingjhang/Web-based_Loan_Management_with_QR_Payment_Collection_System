@@ -21,7 +21,7 @@
                 <tr>
                     <td>
                         <div class="profile-info">
-                            <img src="{{ asset('storage/images/' . ($loan->borrower->BorrowerPhoto ? $loan->borrower->BorrowerPhoto : 'profilepic.png')) }}" alt="">
+                            <img src="{{ asset('images/' . ($loan->borrower->BorrowerPhoto ? $loan->borrower->BorrowerPhoto : 'profilepic.png')) }}" alt="">
                             <div class="name-id">
                                 <div class="name">{{ $loan->borrower->FirstName }} {{ $loan->borrower->LastName }}</div>
                                 <div class="id">Loan ID: {{ $loan->LoanID }}</div>

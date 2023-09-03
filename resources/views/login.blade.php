@@ -30,7 +30,7 @@
                         <form action="{{ route('login.validate') }}" method="POST">
                             @csrf
                             <div class="input-group mb-3">
-                                <input type="text" name="email" class="form-control form-control-lg bg-light fs-6" style="padding: 12px;" placeholder="Email address">
+                                <input type="text" name="username" class="form-control form-control-lg bg-light fs-6" style="padding: 12px;" placeholder="Username">
                             </div>
                             <div class="input-group mb-3">
                                 <input type="password" name="password" class="form-control form-control-lg bg-light fs-6" style="padding: 12px;" placeholder="Password">

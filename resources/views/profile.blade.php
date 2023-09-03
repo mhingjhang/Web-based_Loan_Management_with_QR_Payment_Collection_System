@@ -11,7 +11,7 @@
     <h1 class="title">Profile</h1>
     <div class="d-flex">
 
-        <a href="#" class="btn btn-primary mr-3" style="border-radius: 10px;">Edit Account</a>
+        <a href="{{route('showEditAccount')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Edit Account</a>
         <a href="{{route('showCreateAccount')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Create Account</a>
        
         <button class="btn btn-primary" style="border-radius: 10px;">Print</button>

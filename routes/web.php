@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LoanApplicationController;
@@ -28,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
-Route::post('/login/validate', [LoginController::class, 'validate'])->name('login.validate');
+Route::post('/login/validate', [LoginController::class, 'login'])->name('login.validate');
 Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
 
 Route::get('/loanapplication', [LoanApplicationController::class, 'show'])->name('loanapplication');
@@ -74,7 +73,9 @@ Route::post('/collector/{id}', [CollectorController::class, 'assignArea'])->name
 
 Route::get('/profile', [UserManagementController::class, 'show'])->name('profile');
 Route::post('/profile/createAccount', [UserManagementController::class, 'createAccount'])->name('createAccount');
+Route::put('profile/update-account/{id}', [UserManagementController::class, 'updateAccount'])->name('updateAccount');
 Route::get('/profile/create-account', [UserManagementController::class, 'showCreateAccount'])->name('showCreateAccount');
 Route::get('/profile/deactivate/{id}', [UserManagementController::class, 'deactivateAccount'])->name('deactivateAccount');
+Route::get('/profile/show-edit-account', [UserManagementController::class, 'showEditAccount'])->name('showEditAccount');
 
 

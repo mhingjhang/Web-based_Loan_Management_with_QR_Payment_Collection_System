@@ -4,7 +4,7 @@
     height: 150px;
     border-radius: 50%;
     /* Makes it circular */
-    border: 2px dashed #ccc;
+    border: 2px solid #ccc;
     /* Optional: Add a border */
     text-align: center;
     line-height: 150px;
@@ -23,13 +23,38 @@
     /* Center the background image */
 }
 
+
+.circular-image-placeholder img {
+    width: 150px;
+    /* Adjust the width and height as needed */
+    height: 150px;
+    border-radius: 50%;
+    /* Makes it circular */
+    border: 2px solid #ccc;
+    /* Optional: Add a border */
+    text-align: center;
+    line-height: 150px;
+    /* Center content vertically */
+    font-size: 20px;
+    /* Optional: Adjust font size */
+    color: #ccc;
+    /* Optional: Text color */
+    background-color: #f0f0f0;
+    /* Optional: Background color */
+    cursor: pointer;
+    /* Optional: Change cursor on hover */
+    background-size: cover;
+    /* Resize the background image to cover the circular area */
+    background-position: center center;
+    /* Center the background image */
+}
   /* Hide the file input, so only the circular placeholder is visible */
-  #borrower_photo {
+  #user_photo {
       display: none;
   }
 
   /* Optional: Style the file input label (you can adjust this as needed) */
-  label[for="borrower_photo"] {
+  label[for="user_photo"] {
       display: block;
       margin-top: 10px;
       text-align: center;

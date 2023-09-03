@@ -8,6 +8,10 @@ class DashboardController extends Controller
 {
     public function show()
     {
+
+
+        // Pass the $employee data to your view
         return view('dashboard');
+
     }
 }

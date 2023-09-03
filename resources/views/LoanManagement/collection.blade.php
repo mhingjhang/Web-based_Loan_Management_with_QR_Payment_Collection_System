@@ -24,7 +24,7 @@
                         <tr>
                             <td>
                                 <div class="profile-info">
-                                    <img src="{{ asset('storage/images/profilepic.png') }}" alt="">
+                                    <img src="{{ asset('images/profilepic.png') }}" alt="">
                                     <div class="name-id">
                                         <div class="name">{{ $collection->CollectorName }} {{ $collection->EmployeeID }}</div>
                                         <div class="id">Area: {{ $collection->AreaAssigned }}</div>
@@ -60,7 +60,7 @@
                             <div class="row justify-content-center align-items-center">
                                 <div class="col text-center">
                                     <div class="modal-image">
-                                        <img src="{{ asset('storage/images/profilepic.png') }}" alt="">
+                                        <img src="{{ asset('images/profilepic.png') }}" alt="">
                                     </div>
                                     <h6 class="name font-weight-bold mt-2" style="font-size: 18px;">{{ $collection->CollectorName}}</h6>
                                     <p>{{ $collection->AreaAssigned }}</p>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\UserAccount;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserManagementController extends Controller
@@ -28,8 +29,8 @@ class UserManagementController extends Controller
     {
         $imagePath;
  
-        if ($request->hasFile('borrower_photo')) {
-            $file = $request->file('borrower_photo');
+        if ($request->hasFile('user_photo')) {
+            $file = $request->file('user_photo');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images'), $fileName);
             $imagePath = $fileName;
@@ -76,4 +77,75 @@ class UserManagementController extends Controller
 
          return redirect()->back()->with('success', 'User Deactivated successfully');
     }
+
+    public function showEditAccount(Request $request) {
+        // Retrieve the authenticated user's ID
+        $userId = Auth::id();
+
+        // Use the user ID to fetch the corresponding Employee data
+        $employee = Employee::with('userAccount')->where('UserAccountID', $userId)->first();
+
+        if (!$employee) {
+            // Handle the case where no corresponding Employee record is found
+            // You can redirect with an error message or handle it as needed.
+            return redirect()->route('dashboard')->with('error', 'Employee record not found.');
+        }
+
+        // Pass the $employee data to your view
+        return view('editAccount', ['employee' => $employee]);
+    }
+
+    public function updateAccount(Request $request, $id)
+    {
+        
+        // Validate the form data
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'middle_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'contact_number' => 'required|string|max:20',
+            'position' => 'required|string',
+            'username' => 'required|string',
+            'password' => 'nullable|string', // Password is optional
+            'confirm_password' => 'nullable|string|same:password', // Confirm password matches password
+            'user_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Optional profile picture update
+        ]);
+
+        // Find the employee by ID
+        $employee = Employee::findOrFail($id);
+
+        // Update the employee model with the new data
+        $employee->FirstName = $request->input('first_name');
+        $employee->MiddleName = $request->input('middle_name');
+        $employee->LastName = $request->input('last_name');
+        $employee->Email = $request->input('email');
+        $employee->ContactNumber = $request->input('contact_number');
+        $employee->Position = $request->input('position');
+
+        // Update the user account model (assuming there is a relationship)
+        $userAccount = $employee->userAccount;
+        $userAccount->UserName = $request->input('username');
+        
+        // Update the password only if a new one is provided
+        if ($request->filled('password')) {
+            $userAccount->Password = bcrypt($request->input('password'));
+        }
+
+
+        if ($request->hasFile('user_photo')) {
+            $file = $request->file('user_photo');
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $fileName);
+            $employee->ProfilePicture = $fileName;
+        }
+
+        // Save the updated models
+        $employee->save();
+        $userAccount->save();
+
+        // Redirect to a success page or return a response
+        return redirect()->back()->with('success', 'Account updated successfully');
+    }
+
 }

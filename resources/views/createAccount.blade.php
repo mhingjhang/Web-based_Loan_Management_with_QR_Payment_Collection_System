@@ -11,8 +11,8 @@
 <div class="d-flex justify-content-between align-items-center">
     <h1 class="title">Create Account</h1>
     <div class="d-flex">
-
-        <a href="#" class="btn btn-primary mr-3" style="border-radius: 10px;">Edit Account</a>
+        <a href="{{route('profile')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Back</a>
+        <a href="{{route('showEditAccount')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Edit Account</a>
         <a href="{{route('showCreateAccount')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Create Account</a>
        
         <button class="btn btn-primary" style="border-radius: 10px;">Print</button>
@@ -27,11 +27,11 @@
         @csrf
         <div class="row" style="width: 100%; display:flex; justify-content: center;">
             <!-- Circular image placeholder -->
-            <label for="borrower_photo" class="circular-image-placeholder" id="previewImage">
+            <label for="user_photo" class="circular-image-placeholder" id="previewImage">
                 Upload Photo
             </label>
             <!-- File input (hidden) -->
-            <input type="file" class="" id="borrower_photo" name="borrower_photo" required onchange="displaySelectedImage(this)">
+            <input type="file" class="" id="user_photo" name="user_photo" required onchange="displaySelectedImage(this)">
         </div>
 
         <div class="row">

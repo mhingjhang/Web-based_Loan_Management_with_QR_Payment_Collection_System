@@ -33,11 +33,38 @@
 	@livewireStyles
 </head>
 <body>
+
+	@php
+        $userId = Auth::id();
+
+        // Use the user ID to fetch the corresponding Employee data
+        $employee = \App\Models\Employee::where('UserAccountID', $userId)->first();
+
+        if (!$employee) {
+            // Handle the case where no corresponding Employee record is found
+            // You can redirect with an error message or handle it as needed.
+            $errorMessage = 'Employee record not found.';
+        }
+    @endphp
 	
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand"><img src="{{ asset('images/logo.png') }}" alt=""> Three Fe's Appliance Emporium</a>
 		<ul class="side-menu">
+			<li>
+				<div class="profile-info">
+					@if (isset($employee))
+                    <img src="{{ asset('images/' . $employee->ProfilePicture) }}" alt="" style="width: 35px; height: 35px;">
+                        <div class="name-id">
+                            <div style="font-size: 15px; font-weight: bold;">{{ $employee->FirstName }}</div>
+                            <div style="font-size: 12px;">Position: {{ $employee->Position }}</div>
+                        </div>
+					@else
+						<p>{{ $errorMessage }}</p>
+					@endif
+                </div>
+			</li>
+			<hr>
 			<li><a href="{{ route('dashboard') }}" class="dashboard-link"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
 			<li class="divider" data-text="main">Main</li>
 			<li>

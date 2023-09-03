@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\LoanApplication;
 use App\Models\Approval;
 use App\Models\Employee;
+use Illuminate\Support\Carbon;
 
 
 class LoanApplicationController extends Controller
@@ -155,20 +156,23 @@ class LoanApplicationController extends Controller
         $loanApplication->Status = 'Pending'; 
         $loanApplication->save();
 
-        $approval = new Approval;
-        $approval->ApprovalLevelID = 1;
-        $approval->LoanApplicationID = $loanApplication->LoanApplicationID;
-        $approval->save();
+        $approval1 = new Approval;
+        $approval1->ApprovalLevelID = 1;
+        $approval1->LoanApplicationID = $loanApplication->LoanApplicationID;
+        $approval1->created_at = Carbon::now()->addSeconds(1);
+        $approval1->save();
 
-        $approval = new Approval;
-        $approval->ApprovalLevelID = 2;
-        $approval->LoanApplicationID = $loanApplication->LoanApplicationID;
-        $approval->save();
+        $approval2 = new Approval;
+        $approval2->ApprovalLevelID = 2;
+        $approval2->LoanApplicationID = $loanApplication->LoanApplicationID;
+        $approval2->created_at = Carbon::now()->addSeconds(2);
+        $approval2->save();
 
-        $approval = new Approval;
-        $approval->ApprovalLevelID = 3;
-        $approval->LoanApplicationID = $loanApplication->LoanApplicationID;
-        $approval->save();
+        $approval3 = new Approval;
+        $approval3->ApprovalLevelID = 3;
+        $approval3->LoanApplicationID = $loanApplication->LoanApplicationID;
+        $approval3->created_at = Carbon::now()->addSeconds(3);
+        $approval3->save();
 
         // Flash a success message to the session
         $request->session()->flash('success', 'Loan Application successfully created!');

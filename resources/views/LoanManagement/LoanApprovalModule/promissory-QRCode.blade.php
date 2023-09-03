@@ -61,7 +61,7 @@
         <div class="card-body text-center" style="padding: 35px;">
             <div class="qr-code">
                 @php
-                    $name = $loan->borrower->FirstName . ' ' . $loan->borrower->MiddleName . ' ' . $loan->borrower->LastName;
+                    $name = 'BorrowerID: '. $loan->borrower->BorrowerID . '\n' . 'LoanID: ' . $loan->LoanID;
                 @endphp
                 {{ QrCode::size(200)->generate($name); }}
             </div>

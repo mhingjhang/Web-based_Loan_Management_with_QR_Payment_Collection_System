@@ -31,7 +31,7 @@
     <div style="max-width: 100%; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center;">
-                <img src="{{ asset('storage/images/' . $payments->loan->borrower->BorrowerPhoto)}}" alt="Profile Picture" style="width: 80px; height: 80px; border-radius: 50%; margin-right: 20px;">
+                <img src="{{ asset('images/' . $payments->loan->borrower->BorrowerPhoto)}}" alt="Profile Picture" style="width: 80px; height: 80px; border-radius: 50%; margin-right: 20px;">
                
                 <div>
                     <h1 style="margin: 0; font-size: 22px;">{{ $payments->loan->borrower->FirstName }} {{ $payments->loan->borrower->MiddleName }} {{ $payments->loan->borrower->LastName}} </h1>
@@ -124,15 +124,15 @@
         <!-- Placeholders for pictures -->
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="text-align: center;">
-                <img src="{{ asset('storage/images/' . $payments->loan->borrower->business->EstablishmentPhoto)}}" alt="Business Establishment" style="width: 200px; height: auto; border-radius: 10px; background-color: #ccc;">
+                <img src="{{ asset('images/' . $payments->loan->borrower->business->EstablishmentPhoto)}}" alt="Business Establishment" style="width: 200px; height: auto; border-radius: 10px; background-color: #ccc;">
                 <p style="margin: 5px 0; font-size: 14px; color: #505050;">Business Establishment</p>
             </div>
             <div style="text-align: center;">
-                <img src="{{ asset('storage/images/' . $payments->loan->borrower->ValidIDPhoto)}}" alt="Valid ID" style="width: 350px; height: auto; border-radius: 10px; background-color: #ccc;">
+                <img src="{{ asset('images/' . $payments->loan->borrower->ValidIDPhoto)}}" alt="Valid ID" style="width: 350px; height: auto; border-radius: 10px; background-color: #ccc;">
                 <p style="margin: 5px 0; font-size: 14px; color: #505050;">Valid ID</p>
             </div>
             <div style="text-align: center;">
-                <img src="{{ asset('storage/images/' . $payments->loan->borrower->business->BusinessPermitPhoto)}}" alt="Business Permit" style="width: 200px; height: auto; border-radius: 10px; background-color: #ccc;">
+                <img src="{{ asset('images/' . $payments->loan->borrower->business->BusinessPermitPhoto)}}" alt="Business Permit" style="width: 200px; height: auto; border-radius: 10px; background-color: #ccc;">
                 <p style="margin: 5px 0; font-size: 14px; color: #505050;">Business Permit (Optional)</p>
             </div>
         </div>
