@@ -23,9 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response = array(
             "UserAccountID" => $row["UserAccountID"],
             "UserName" => $row["UserName"],
-            "Password" => $row["Password"],
-            "ProfilePicture" => $row["ProfilePicture"],
-
+            "Password" => $row["Password"]
         );
 
         // Return JSON response

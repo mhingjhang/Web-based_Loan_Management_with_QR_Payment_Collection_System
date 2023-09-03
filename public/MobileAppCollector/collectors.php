@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $userAccountId = mysqli_real_escape_string($conn, $userAccountId);
 
     // SQL query to fetch collector details based on UserAccountID
-    $sql = "SELECT * FROM collectors WHERE UserAccountID='$userAccountId'";
+    $sql = "SELECT * FROM employees WHERE UserAccountID='$userAccountId'";
 
     $result = $conn->query($sql);
 
@@ -16,14 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         // Fetch collector details
         $row = $result->fetch_assoc();
         $response = array(
-            "CollectorID" => $row["CollectorID"],
+            "EmployeeID" => $row["EmployeeID"],
             "UserAccountID" => $row["UserAccountID"],
             "FirstName" => $row["FirstName"],
             "MiddleName" => $row["MiddleName"],
             "LastName" => $row["LastName"],
             "Email" => $row["Email"],
-            "ContactNumber" => $row["ContactNumber"],
-            "CollectionArea" => $row["CollectionArea"]
+            "ContactNumber" => $row["ContactNumber"]
             // Add other fields as needed
         );
 
