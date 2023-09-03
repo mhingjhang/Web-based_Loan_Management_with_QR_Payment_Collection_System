@@ -9,14 +9,16 @@
 
 <form action="{{ route('addRepayment') }}" method="post">
     @csrf
-    <div class="row">
-        <div class="col-md-6">
-            <h1 class="title">Add Payment</h1>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="title">Add Payment</h1>
+        <div class="d-flex">
+            <a href="{{ route('repayment') }}" class="btn btn-primary mr-3" style="border-radius: 10px;">Back</a>
+            <a href="{{route('showAddRepayment')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Add Repayment</a>
+            <a href="{{route('showVoidTransaction')}}" class="btn btn-primary mr-3" style="border-radius: 10px;">Void Tranactions</a>
+        
+            <button class="btn btn-primary" style="border-radius: 10px;">Print</button>
         </div>
-        <div class="col-md-6 d-flex justify-content-end">
-            <button type="button" onclick="history.back();" class="btn btn-primary mr-4">Back</button>
-            <button type="submit" class="btn btn-primary">Next</button>
-        </div>
+        
     </div>
 
     <div class="container" style="padding:20px;">

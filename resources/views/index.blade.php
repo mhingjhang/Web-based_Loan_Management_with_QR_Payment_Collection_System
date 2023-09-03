@@ -51,7 +51,7 @@
 					<li><a href="{{ route('repayment') }}">Repayment</a></li>
 				</ul>
 			</li>
-			<li><a href="#"><i class='bx bxs-group icon' ></i> Collectors</a></li>
+			<li><a href="{{ route('collector') }}"><i class='bx bxs-group icon' ></i> Collectors</a></li>
 			<li>
 				<a href="#"><i class='bx bx-line-chart icon'></i> Reports <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
@@ -65,7 +65,7 @@
 				</ul>
 			</li>
 			<li class="divider" data-text="Users">Users</li>
-			<li><a href="#"><i class='bx bxs-user icon'></i> Profile</a></li>
+			<li><a href="{{ route('profile') }}"><i class='bx bxs-user icon'></i> Profile</a></li>
 			<li><a href="{{ route('login') }}"><i class='bx bx-log-out icon'></i> Logout</a></li>
 		</ul>
 		

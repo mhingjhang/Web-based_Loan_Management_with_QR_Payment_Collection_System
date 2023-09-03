@@ -24,6 +24,16 @@ class Employee extends Model
         return $this->hasMany(Payment::class, 'PaymentID', 'PaymentID');
     }
 
+    public function userAccount()
+    {
+        return $this->belongsTo(UserAccount::class, 'UserAccountID');
+    }
+
+    protected $fillable = [
+        // Other fillable fields...
+        'Status',
+    ];
+
     
 
 }

@@ -10,6 +10,8 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\BorrowerController;
 use App\Http\Controllers\LoanInformationController;
 use App\Http\Controllers\RepaymentController;
+use App\Http\Controllers\CollectorController;
+use App\Http\Controllers\UserManagementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,4 +67,11 @@ Route::get('/repayment/approve-void/{id}', [RepaymentController::class, 'approve
 
 
 Route::get('/get-loan-data/{loanID}', [RepaymentController::class, 'getLoanData'])->name('get-loan-data');
+
+Route::get('/collector', [CollectorController::class, 'show'])->name('collector');
+Route::post('/collector/{id}', [CollectorController::class, 'assignArea'])->name('assignArea');
+
+
+Route::get('/profile', [UserManagementController::class, 'show'])->name('profile');
+Route::get('/profile/deactivate/{id}', [UserManagementController::class, 'deactivateAccount'])->name('deactivateAccount');
 

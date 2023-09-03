@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id('UserAccountID');
             $table->string('UserName');
             $table->string('Password');
+            $table->dateTime('DateCreated')->nullable();
             $table->string('Status');
         });
     }
