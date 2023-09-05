@@ -12,6 +12,6 @@ class ApprovalSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Approval::factory(5)->create(); 
+        \App\Models\Approval::factory(20)->create(); 
     }
 }

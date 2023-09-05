@@ -11,6 +11,7 @@ use App\Http\Controllers\LoanInformationController;
 use App\Http\Controllers\RepaymentController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\ReportsManagementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,4 +79,14 @@ Route::get('/profile/create-account', [UserManagementController::class, 'showCre
 Route::get('/profile/deactivate/{id}', [UserManagementController::class, 'deactivateAccount'])->name('deactivateAccount');
 Route::get('/profile/show-edit-account', [UserManagementController::class, 'showEditAccount'])->name('showEditAccount');
 
+Route::get('/repots/showLoanApplicationReport', [ReportsManagementController::class, 'showLoanApplicationReport'])->name('showLoanApplicationReport');
+Route::get('/filter-loan-applications', [ReportsManagementController::class, 'filterLoanApplications'])->name('filterLoanApplications');
+Route::get('/printPreviewLoanApplicationReport', [ReportsManagementController::class, 'printPreviewLoanApplicationReport'])->name('printPreviewLoanApplicationReport');
 
+
+Route::get('/repots/showOutstandingBalanceReport', [ReportsManagementController::class, 'showOutstandingBalanceReport'])->name('showOutstandingBalanceReport');
+Route::get('/repots/showLoanPortfolioReport', [ReportsManagementController::class, 'showLoanPortfolioReport'])->name('showLoanPortfolioReport');
+Route::get('/repots/showDelinquencyReport', [ReportsManagementController::class, 'showDelinquencyReport'])->name('showDelinquencyReport');
+Route::get('/repots/showDisbursementReport', [ReportsManagementController::class, 'showDisbursementReport'])->name('showDisbursementReport');
+Route::get('/repots/showCollectorsReport', [ReportsManagementController::class, 'showCollectorsReport'])->name('showCollectorsReport');
+Route::get('/repots/showGrossIncomeReport', [ReportsManagementController::class, 'showGrossIncomeReport'])->name('showGrossIncomeReport');

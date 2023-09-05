@@ -98,7 +98,7 @@
                     <td>₱{{ $repayment->PaymentAmount }}</td>
                     <td>{{ $repayment->employee->FirstName}} {{ $repayment->employee->LastName}}</td>
                     <td>
-                        <button class="button" data-toggle="modal" data-target="#repayment_{{ $repayment->PaymentID }}">Void</button>
+                        <button class="button">Void</button>
                     </td>
                     
                 </tr>

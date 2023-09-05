@@ -30,4 +30,13 @@ class EmployeeFactory extends Factory
             'UserAccountID' => \App\Models\UserAccount::factory(),
         ];
     }
+
+    public function creditInvestigator()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'Position' => 'Credit Investigator',
+            ];
+        });
+    }
 }

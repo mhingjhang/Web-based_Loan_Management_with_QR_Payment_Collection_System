@@ -83,13 +83,13 @@
 			<li>
 				<a href="#"><i class='bx bx-line-chart icon'></i> Reports <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li><a href="#">Loan Application</a></li>
-					<li><a href="#">Outstanding Balance</a></li>
-					<li><a href="#">Loan Portfolio</a></li>
-					<li><a href="#">Delinquency</a></li>
-					<li><a href="#">Disbursement</a></li>
-					<li><a href="#">Collectors</a></li>
-					<li><a href="#">Gross Income</a></li>
+					<li><a href="{{ route('showLoanApplicationReport') }}">Loan Application</a></li>
+					<li><a href="{{ route('showOutstandingBalanceReport') }}">Outstanding Balance</a></li>
+					<li><a href="{{ route('showLoanPortfolioReport') }}">Loan Portfolio</a></li>
+					<li><a href="{{ route('showDelinquencyReport') }}">Delinquency</a></li>
+					<li><a href="{{ route('showDisbursementReport') }}">Disbursement</a></li>
+					<li><a href="{{ route('showCollectorsReport') }}">Collectors</a></li>
+					<li><a href="{{ route('showGrossIncomeReport') }}">Gross Income</a></li>
 				</ul>
 			</li>
 			<li class="divider" data-text="Users">Users</li>
@@ -128,7 +128,7 @@
 
 
 
-	
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<script src="{{ asset('js/modal.js') }}"></script>
 	<script src="{{ asset('js/script.js') }}"></script>

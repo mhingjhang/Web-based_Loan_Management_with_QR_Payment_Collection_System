@@ -20,8 +20,10 @@ class UserAccountFactory extends Factory
     {
         return [
             'UserName' => $this->faker->unique()->userName,  
-            'Password' => bcrypt($this->faker->password),     
+            'Password' => bcrypt($this->faker->password), 
+            'DateCreated' => now(),     
             'Status' => $this->faker->randomElement(['Active', 'Inactive']), 
         ];
     }
+
 }

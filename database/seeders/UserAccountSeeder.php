@@ -12,6 +12,6 @@ class UserAccountSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\UserAccount::factory(5)->create();
+        \App\Models\UserAccount::factory(10)->create();
     }
 }

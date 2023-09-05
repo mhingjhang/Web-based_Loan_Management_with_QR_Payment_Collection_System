@@ -13,12 +13,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            ApprovalLevelSeeder::class,
             EmployeeSeeder::class,
             UserAccountSeeder::class,
-            ClientSeeder::class,
             ClientBusinessSeeder::class,
-            AreaSeeder::class,
+            ClientSeeder::class,
+            LoanApplicationSeeder::class,
+            ApprovalSeeder::class,
+           
         ]);
     }
 }
